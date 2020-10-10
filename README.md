@@ -10,7 +10,12 @@ No script is required. Proper database objects are created by spring jpa.
 
 c) Steps how to build and run the project
 
-Import project from git repository. Run SpringBootApplication in BackendDeveloperAssignmentApplication class.
+1. Import project from git repository. Run SpringBootApplication in BackendDeveloperAssignmentApplication class.
+
+2. Set mysql database properties in application.properties with existing user and any database name:
+ - spring.datasource.url
+ - spring.datasource.username
+ - spring.datasource.password
 
 d) Example usages (ie. like example curl commands)
 
