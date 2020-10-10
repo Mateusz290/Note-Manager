@@ -6,7 +6,7 @@ Java 8+, Maven, MySQL Database, Intellij IDEA
 
 b) Steps how to run scripts that will setup database for the project
 
-No script is required. Proper database objects are created by spring jpa.
+No script is required. Proper database objects are created by spring jpa module.
 
 c) Steps how to build and run the project
 
