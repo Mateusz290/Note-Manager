@@ -5,7 +5,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
-
 @Entity
 public class Note {
 
@@ -43,7 +42,12 @@ public class Note {
         this.modified = modified;
     }
 
-    public Note(@NotNull Long note_id, @NotNull(message = "title cannot be null") @Size(min = 3, message = "Title show have at least 3 characters") String title, @NotNull(message = "content cannot be null") @Size(min = 3, message = "content show have at least 3 characters") String content, Date created, Date modified, Integer version) {
+    public Note(@NotNull Long note_id,
+                @NotNull(message = "title cannot be null")
+                @Size(min = 3, message = "Title show have at least 3 characters") String title,
+                @NotNull(message = "content cannot be null")
+                @Size(min = 3, message = "content show have at least 3 characters") String content, Date created,
+                Date modified, Integer version) {
         this.noteId = note_id;
         this.title = title;
         this.content = content;

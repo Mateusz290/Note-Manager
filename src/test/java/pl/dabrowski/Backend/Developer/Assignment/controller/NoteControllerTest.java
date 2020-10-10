@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -42,23 +41,24 @@ class NoteControllerTest {
     @MockBean
     private NoteService service;
 
-    private static List<Note> noteList;
+    private static List<Note> notesList;
 
     @BeforeAll
     public static void setTestDate() {
 
-        noteList = new ArrayList<>();
-
-        noteList.add(new Note(1L,"Day 7", "It was a good day", new Date(), new Date(), 1));
-        noteList.add(new Note(1L ,"Day 8", "It was a confusing day", new Date(), new Date(), 2));
-        noteList.add(new Note(1L, "Day 9", "It was a boring day", new Date(), new Date(), 3));
-        noteList.add(new Note(2L, "Day 10", "It was a pleasing day", new Date(), new Date(), 1));
+        notesList = new ArrayList<>();
+        notesList.add(new Note(1L,"Day 7", "One Flew Over the Cuckoo's Nest",
+                new Date(), new Date(), 1));
+        notesList.add(new Note(1L ,"Day 8", "The Shawshank Redemption",
+                new Date(), new Date(), 2));
+        notesList.add(new Note(1L, "Day 9", "The Godfather", new Date(), new Date(), 3));
+        notesList.add(new Note(2L, "Day 10", "12 Angry Men", new Date(), new Date(), 1));
     }
 
     @Test
     void getAllNotes() throws Exception {
 
-        Mockito.when(service.getAllNotes()).thenReturn(noteList);
+        Mockito.when(service.getAllNotes()).thenReturn(notesList);
 
         this.mvc.perform(MockMvcRequestBuilders.get("/getAllNotes")
                 .accept(MediaType.APPLICATION_JSON))
@@ -70,7 +70,7 @@ class NoteControllerTest {
 
     @Test
     void getHistoryForParticularNote() throws Exception {
-        Mockito.when(service.getHistoryForParticularNote(1L)).thenReturn(noteList);
+        Mockito.when(service.getHistoryForParticularNote(1L)).thenReturn(notesList);
 
         this.mvc.perform(MockMvcRequestBuilders.get("/getNoteHistory/1")
                 .accept(MediaType.APPLICATION_JSON))
@@ -84,14 +84,15 @@ class NoteControllerTest {
     void getNote() throws Exception {
         Note note = new Note();
         note.setTitle("Day 7");
-        note.setContent("It was a good day");
+        note.setContent("One Flew Over the Cuckoo's Nest");
 
         Mockito.when(service.getNoteByIdVersion(1L)).thenReturn(note);
 
         mvc.perform(MockMvcRequestBuilders.get("/getNote/1"))
                 .andDo(print())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.title").value("Day 7"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.content").value("It was a good day"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.content")
+                        .value("One Flew Over the Cuckoo's Nest"))
                 .andExpect(status().isOk());
 
     }

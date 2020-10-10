@@ -20,13 +20,11 @@ public class BackendDeveloperAssignmentApplication {
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void runExample() {
-
 		List<Note> notesList = new ArrayList<>();
-		notesList.add(new Note(1L,"Day 7", "It was a good day", new Date(), new Date(), 1));
-		notesList.add(new Note(1L ,"Day 8", "It was a confusing day", new Date(), new Date(), 2));
-		notesList.add(new Note(1L, "Day 9", "It was a boring day", new Date(), new Date(), 3));
-		notesList.add(new Note(2L, "Day 10", "It was a pleasing day", new Date(), new Date(), 1));
-
+		notesList.add(new Note(1L,"Day 7", "One Flew Over the Cuckoo's Nest", new Date(), new Date(), 1));
+		notesList.add(new Note(1L ,"Day 8", "The Shawshank Redemption", new Date(), new Date(), 2));
+		notesList.add(new Note(1L, "Day 9", "The Godfather", new Date(), new Date(), 3));
+		notesList.add(new Note(2L, "Day 10", "12 Angry Men", new Date(), new Date(), 1));
 		repo.saveAll(notesList);
 
 	}

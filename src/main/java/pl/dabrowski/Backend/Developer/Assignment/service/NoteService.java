@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.dabrowski.Backend.Developer.Assignment.model.Note;
 import pl.dabrowski.Backend.Developer.Assignment.repo.NoteRepo;
-import pl.dabrowski.Backend.Developer.Assignment.model.Note;
-import pl.dabrowski.Backend.Developer.Assignment.repo.NoteRepo;
 
 import java.util.Date;
 import java.util.List;
